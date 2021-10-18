@@ -19,7 +19,7 @@
 
 #include "stm32f407xx.h"
 static void GPIO_LedConfig();
-static void LockControl();
+//static void LockControl();
 static void GPIO_ButtonInterruptConfg();
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
@@ -34,7 +34,8 @@ void EXTI0_IRQHandler()
 	{
 		EXTI->PR |= ( 0x1U << 0U);
 
-		GPIO_WritePin(GPIOD, GPIO_PIN_All, GPIO_Pin_Set);
+		GPIO_TogglePin(GPIOG, GPIO_PIN_13);
+
 	}
 }
 
@@ -44,14 +45,14 @@ int main(void)
 	/**/
 	GPIO_LedConfig();
 
-
+	//GPIO_WritePin(GPIOD,GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15, GPIO_Pin_Set);
+	GPIO_WritePin(GPIOG, GPIO_PIN_All, GPIO_Pin_Reset);
 
 	GPIO_ButtonInterruptConfg();
     /* Loop forever */
 	for(;;)
 	{
-		//GPIO_WritePin(GPIOG,GPIO_PIN_All, GPIO_Pin_Set);
-		GPIO_WritePin(GPIOG,GPIO_PIN_All,GPIO_Pin_Reset);
+
 	}
 
 }
@@ -60,11 +61,12 @@ static void GPIO_LedConfig()
 {
 	GPIO_InitTypeDef_t GPIO_InitStruct = {0};
 
-	RCC_GPIOG_CLK_ENABLE();
-	RCC_GPIOA_CLK_ENABLE();
-	RCC_SYSCFG_CLK_ENABLE();
 
-	GPIO_InitStruct.pinNumber = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15;
+	RCC_GPIOA_CLK_ENABLE();
+	RCC_GPIOG_CLK_ENABLE();
+
+
+	GPIO_InitStruct.pinNumber =  GPIO_PIN_13 | GPIO_PIN_14;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
 	GPIO_InitStruct.Speed = GPIO_OSPEED_LOW;
 	GPIO_InitStruct.Otype = GPIO_OTYPE_PP;

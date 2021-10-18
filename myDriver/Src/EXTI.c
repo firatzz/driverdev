@@ -86,8 +86,8 @@ void NVIC_EnableInterrupt(IRQNumber_TypeDef_t IRQNumber)
 	uint32_t tempValue = 0;
 
 	tempValue = *( (IRQNumber >> 5U) + NVIC_ISER0 );		//Get NVIC register
-	tempValue &= ~(1U << (IRQNumber & 0x1FU)); 				//Mode(5) of IRQ and clear
-	tempValue |= (1U << (IRQNumber & 0x1FU));				//set to enable
+	tempValue &= ~(0x1U << (IRQNumber & 0x1FU)); 				//Mode(5) of IRQ and clear
+	tempValue |= (0x1U << (IRQNumber & 0x1FU));				//set to enable
 	*( (IRQNumber >> 5U) + NVIC_ISER0 ) = tempValue;
 }
 

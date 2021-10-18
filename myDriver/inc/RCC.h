@@ -39,6 +39,12 @@
 												UNUSED(tempValue);											\
 												}while(0)
 
+#define RCC_GPIOF_CLK_ENABLE()				do{ uint32_t tempValue = 0;										\
+												SET_BIT(RCC->AHB1ENR,RCC_AHB1ENR_GPIOFEN);					\
+												tempValue = READ_BIT(RCC->AHB1ENR,RCC_AHB1ENR_GPIOFEN);		\
+												UNUSED(tempValue);											\
+												}while(0)
+
 #define RCC_GPIOG_CLK_ENABLE()				do{ uint32_t tempValue = 0;										\
 												SET_BIT(RCC->AHB1ENR,RCC_AHB1ENR_GPIOGEN);					\
 												tempValue = READ_BIT(RCC->AHB1ENR,RCC_AHB1ENR_GPIOGEN);		\

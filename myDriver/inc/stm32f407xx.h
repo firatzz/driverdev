@@ -218,7 +218,9 @@ typedef struct
 #define GPIOC						( (GPIO_TypeDef_t *)(GPIOC_BASE_ADDR) )
 #define GPIOD						( (GPIO_TypeDef_t *)(GPIOD_BASE_ADDR) )
 #define GPIOE						( (GPIO_TypeDef_t *)(GPIOE_BASE_ADDR) )
+#define GPIOF						( (GPIO_TypeDef_t *)(GPIOF_BASE_ADDR) )
 #define GPIOG						( (GPIO_TypeDef_t *)(GPIOG_BASE_ADDR) )
+
 
 #define RCC							( (RCC_TypeDef_t * )(RCC_BASE_ADDR)	  )
 
@@ -242,14 +244,23 @@ typedef struct
 #define RCC_AHB1ENR_GPIODEN_Msk				(0x1U << RCC_AHB1ENR_GPIODEN_Pos)						// RCC AHB1NER register GPIODEN Bit Mask
 #define RCC_AHB1ENR_GPIODEN					RCC_AHB1ENR_GPIODEN_Msk									// RCC AHB1NER register GPIODEN Macro
 
+#define RCC_AHB1ENR_GPIOEEN_Pos				(4U)													// RCC AHB1NER register GPIODEN Bit Position
+#define RCC_AHB1ENR_GPIOEEN_Msk				(0x1U << RCC_AHB1ENR_GPIOEEN_Pos)						// RCC AHB1NER register GPIODEN Bit Mask
+#define RCC_AHB1ENR_GPIOEEN					RCC_AHB1ENR_GPIOEEN_Msk
+
+#define RCC_AHB1ENR_GPIOFEN_Pos				(5U)													// RCC AHB1NER register GPIODEN Bit Position
+#define RCC_AHB1ENR_GPIOFEN_Msk				(0x1U << RCC_AHB1ENR_GPIOFEN_Pos)						// RCC AHB1NER register GPIODEN Bit Mask
+#define RCC_AHB1ENR_GPIOFEN					RCC_AHB1ENR_GPIOFEN_Msk									// RCC AHB1NER register GPIODEN Macro
+
 #define RCC_AHB1ENR_GPIOGEN_Pos				(6U)													// RCC AHB1NER register GPIODEN Bit Position
 #define RCC_AHB1ENR_GPIOGEN_Msk				(0x1U << RCC_AHB1ENR_GPIOGEN_Pos)						// RCC AHB1NER register GPIODEN Bit Mask
 #define RCC_AHB1ENR_GPIOGEN					RCC_AHB1ENR_GPIOGEN_Msk									// RCC AHB1NER register GPIODEN Macro
 
+								// RCC AHB1NER register GPIODEN Macro
+
 #define RCC_APB2ENR_SYSCFGEN_Pos			(14U)													// RCC APB2ENR register SYSCFGEN Bit Position
 #define RCC_APB2ENR_SYSCFG_Msk				(0x1U << RCC_APB2ENR_SYSCFGEN_Pos)						// RCC APB2ENR register SYSCFGEN Bit Mask
 #define RCC_APB2ENR_SYSCFGEN				RCC_APB2ENR_SYSCFG_Msk									// RCC APB2ENR register SYSCFGEN Macro
-
 
 
 #include "RCC.h"
