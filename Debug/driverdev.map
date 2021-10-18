@@ -180,7 +180,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 ./Src/syscalls.o
  .debug_macro   0x0000000000000000       0xce ./Src/syscalls.o
  .debug_line    0x0000000000000000      0x7fd ./Src/syscalls.o
- .debug_str     0x0000000000000000     0x8ea4 ./Src/syscalls.o
+ .debug_str     0x0000000000000000     0x8e88 ./Src/syscalls.o
  .comment       0x0000000000000000       0x54 ./Src/syscalls.o
  .debug_frame   0x0000000000000000      0x2ac ./Src/syscalls.o
  .ARM.attributes
@@ -242,7 +242,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x6a ./Src/sysmem.o
  .debug_macro   0x0000000000000000      0x1df ./Src/sysmem.o
  .debug_line    0x0000000000000000      0x4f3 ./Src/sysmem.o
- .debug_str     0x0000000000000000     0x6277 ./Src/sysmem.o
+ .debug_str     0x0000000000000000     0x625b ./Src/sysmem.o
  .comment       0x0000000000000000       0x54 ./Src/sysmem.o
  .debug_frame   0x0000000000000000       0x34 ./Src/sysmem.o
  .ARM.attributes
@@ -434,8 +434,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xb2 ./myDriver/Src/RCC.o
  .debug_macro   0x0000000000000000       0xbe ./myDriver/Src/RCC.o
  .debug_macro   0x0000000000000000       0x46 ./myDriver/Src/RCC.o
- .debug_line    0x0000000000000000      0x552 ./myDriver/Src/RCC.o
- .debug_str     0x0000000000000000     0x8d28 ./myDriver/Src/RCC.o
+ .debug_line    0x0000000000000000      0x536 ./myDriver/Src/RCC.o
+ .debug_str     0x0000000000000000     0x8d0c ./myDriver/Src/RCC.o
  .comment       0x0000000000000000       0x54 ./myDriver/Src/RCC.o
  .ARM.attributes
                 0x0000000000000000       0x33 ./myDriver/Src/RCC.o
@@ -881,21 +881,21 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x0000000000001efa      0x177 ./myDriver/Src/GPIO.o
  .debug_macro   0x0000000000002071       0xb8 ./myDriver/Src/GPIO.o
 
-.debug_line     0x0000000000000000     0x13af
- .debug_line    0x0000000000000000      0x5ea ./Src/main.o
- .debug_line    0x00000000000005ea       0x84 ./Startup/startup_stm32f407vgtx.o
- .debug_line    0x000000000000066e      0x694 ./myDriver/Src/EXTI.o
- .debug_line    0x0000000000000d02      0x6ad ./myDriver/Src/GPIO.o
+.debug_line     0x0000000000000000     0x135b
+ .debug_line    0x0000000000000000      0x5ce ./Src/main.o
+ .debug_line    0x00000000000005ce       0x84 ./Startup/startup_stm32f407vgtx.o
+ .debug_line    0x0000000000000652      0x678 ./myDriver/Src/EXTI.o
+ .debug_line    0x0000000000000cca      0x691 ./myDriver/Src/GPIO.o
 
-.debug_str      0x0000000000000000     0x8f2f
- .debug_str     0x0000000000000000     0x8d98 ./Src/main.o
-                                       0x900d (size before relaxing)
- .debug_str     0x0000000000008d98       0x31 ./Startup/startup_stm32f407vgtx.o
-                                         0x6d (size before relaxing)
- .debug_str     0x0000000000008dc9       0x9b ./myDriver/Src/EXTI.o
-                                       0x8eb6 (size before relaxing)
- .debug_str     0x0000000000008e64       0xcb ./myDriver/Src/GPIO.o
-                                       0x8e90 (size before relaxing)
+.debug_str      0x0000000000000000     0x8f13
+ .debug_str     0x0000000000000000     0x8d7c ./Src/main.o
+                                       0x8ff1 (size before relaxing)
+ .debug_str     0x0000000000008d7c       0x31 ./Startup/startup_stm32f407vgtx.o
+                                         0x51 (size before relaxing)
+ .debug_str     0x0000000000008dad       0x9b ./myDriver/Src/EXTI.o
+                                       0x8e9a (size before relaxing)
+ .debug_str     0x0000000000008e48       0xcb ./myDriver/Src/GPIO.o
+                                       0x8e74 (size before relaxing)
 
 .comment        0x0000000000000000       0x53
  .comment       0x0000000000000000       0x53 ./Src/main.o
