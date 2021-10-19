@@ -1,16 +1,19 @@
 myDriver/Src/GPIO.o: ../myDriver/Src/GPIO.c \
- C:/STM32CubeIDE/driverdev/myDriver/inc/GPIO.h \
- C:/STM32CubeIDE/driverdev/myDriver/inc/stm32f407xx.h \
- C:/STM32CubeIDE/driverdev/myDriver/inc/RCC.h \
- C:/STM32CubeIDE/driverdev/myDriver/inc/EXTI.h \
- C:/STM32CubeIDE/driverdev/myDriver/inc/GPIO.h
+ C:/STM32CubeIDE/driverdev/myDriver/Inc/GPIO.h \
+ C:/STM32CubeIDE/driverdev/myDriver/Inc/stm32f407xx.h \
+ C:/STM32CubeIDE/driverdev/myDriver/Inc/RCC.h \
+ C:/STM32CubeIDE/driverdev/myDriver/Inc/EXTI.h \
+ C:/STM32CubeIDE/driverdev/myDriver/Inc/SPI.h \
+ C:/STM32CubeIDE/driverdev/myDriver/Inc/stm32f407xx.h
 
-C:/STM32CubeIDE/driverdev/myDriver/inc/GPIO.h:
+C:/STM32CubeIDE/driverdev/myDriver/Inc/GPIO.h:
 
-C:/STM32CubeIDE/driverdev/myDriver/inc/stm32f407xx.h:
+C:/STM32CubeIDE/driverdev/myDriver/Inc/stm32f407xx.h:
 
-C:/STM32CubeIDE/driverdev/myDriver/inc/RCC.h:
+C:/STM32CubeIDE/driverdev/myDriver/Inc/RCC.h:
 
-C:/STM32CubeIDE/driverdev/myDriver/inc/EXTI.h:
+C:/STM32CubeIDE/driverdev/myDriver/Inc/EXTI.h:
 
-C:/STM32CubeIDE/driverdev/myDriver/inc/GPIO.h:
+C:/STM32CubeIDE/driverdev/myDriver/Inc/SPI.h:
+
+C:/STM32CubeIDE/driverdev/myDriver/Inc/stm32f407xx.h:

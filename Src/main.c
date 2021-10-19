@@ -21,7 +21,7 @@
 static void GPIO_LedConfig();
 //static void LockControl();
 static void GPIO_ButtonInterruptConfg();
-
+static void SPI_Config();
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
@@ -104,3 +104,16 @@ static void GPIO_ButtonInterruptConfg()
 	NVIC_EnableInterrupt(EXTI0_IRQNumber);
 
 }
+
+
+static void SPI_Config()
+{
+	SPI_HandleTypeDef_t SPI_HandleStructure= { 0 };
+	SPI_HandleStructure.Instance =  SPI1;
+	SPI_HandleStructure.Init.BaudRate = SPI_BAUDRATE_DIV16;
+	SPI_HandleStructure.Init.CPHA = SPI_CPHA_FIRST;
+
+	SPI_Init(&SPI_HandleStructure);
+
+}
+

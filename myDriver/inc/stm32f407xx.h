@@ -292,10 +292,24 @@ typedef struct
 #define RCC_APB2ENR_SPI4_Msk				(0x1U << RCC_APB2ENR_SPI4_Pos)							// RCC APB2ENR register SPI4 Bit Mask
 #define RCC_APB2ENR_SPI4					RCC_APB2ENR_SPI4_Msk									// RCC APB2ENR register SPI4 Macro
 
-#include "RCC.h"
-#include "EXTI.h"
-#include "GPIO.h"
-#include "SPI.h"
+
+#define SPI_SR_TXE							(1U)
+#define SPI_CR1_SPE							(6U)
+#define SPI_SR_Busy							(7U)
+
+/*
+ * Flag Definitions
+ *
+ */
+
+#define SPI_TXE_FLAG						(0x1U << SPI_SR_TXE)
+#define SPI_Busy_FLAG						(0x1U << SPI_SR_Busy)
+
+
+#include <RCC.h>
+#include <EXTI.h>
+#include <GPIO.h>
+#include <SPI.h>
 
 
 

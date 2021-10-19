@@ -1,0 +1,4 @@
+SPI.c:19:6:SPI_Init	24	static
+SPI.c:47:6:SPI_PeriphCmd	16	static
+SPI.c:72:6:SPI_TransmitData	24	static
+SPI.c:111:18:SPI_GetFlagStatus	16	static

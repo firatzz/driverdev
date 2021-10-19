@@ -58,14 +58,17 @@ void GPIO_Init(GPIO_TypeDef_t *GPIOx, GPIO_InitTypeDef_t *GPIO_ConfigStruct)
 				temp |= (GPIO_ConfigStruct->PuPd << (position *2));
 				GPIOx->PUPDR = temp;
 
+				/*	ALTERNATE FUNCTION CONFIG	*/
+				if(GPIO_ConfigStruct->Mode == GPIO_MODE_AF)
+				{
+					temp = GPIOx->AFR[position >> 3U];
+					temp &= ~( 0xFU << ((position & 0x7U) * 4 ) );
+					temp |= (GPIO_ConfigStruct->Alternate << ((position & 0x7U) * 4 ) );
+					GPIOx->AFR[position >> 3U] = temp;
+				}
+
 		}
-
 	}
-
-
-
-
-
 }
 
 
