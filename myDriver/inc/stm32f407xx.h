@@ -204,13 +204,29 @@ typedef struct
 	__IO uint32_t PR;					/*!<Pending register									Address Offset = 0x0014*/
 }EXTI_TypeDef_t;
 
+typedef struct
+{
+	__IO uint32_t CR1;					/*!<SPI control register 1								Address Offset = 0x0000*/
+	__IO uint32_t CR2;					/*!<SPI control register 2								Address Offset = 0x0004*/
+	__IO uint32_t SR;					/*!<SPI status	register								Address Offset = 0x0008*/
+	__IO uint32_t DR;					/*!<SPI data register									Address Offset = 0x000C*/
+	__IO uint32_t CRCPR;				/*!<SPI CRC polynomial register							Address Offset = 0x0010*/
+	__IO uint32_t RXCRCR;				/*!<SPI RX CRC register									Address Offset = 0x0014*/
+	__IO uint32_t TXCRCR;				/*!<SPI TX CRC register									Address Offset = 0x0018*/
+	__IO uint32_t I2SCFGR;				/*!<SPI_I2Sconfiguration register						Address Offset = 0x001C*/
+	__IO uint32_t I2SPR;				/*!<SPI_I2S prescaler register							Address Offset = 0x0020*/
+}SPI_TypeDef_t;
+
 
 #define SYSCFG						( (SYSCFG_TypeDef_t *)(SYSCFG_BASE_ADDR))
 
-#define EXTI						( (EXTI_TypeDef_t *)(EXTI_BASE_ADDR))
+#define EXTI						( (EXTI_TypeDef_t *)(EXTI_BASE_ADDR)	)
 
 
-
+#define SPI1 						( (SPI_TypeDef_t *)(SPI1_BASE_ADDR)		)
+#define SPI2 						( (SPI_TypeDef_t *)(SPI2_BASE_ADDR)		)
+#define SPI3 						( (SPI_TypeDef_t *)(SPI3_BASE_ADDR)		)
+#define SPI4 						( (SPI_TypeDef_t *)(SPI4_BASE_ADDR)		)
 
 
 #define GPIOA						( (GPIO_TypeDef_t *)(GPIOA_BASE_ADDR) )
@@ -244,30 +260,42 @@ typedef struct
 #define RCC_AHB1ENR_GPIODEN_Msk				(0x1U << RCC_AHB1ENR_GPIODEN_Pos)						// RCC AHB1NER register GPIODEN Bit Mask
 #define RCC_AHB1ENR_GPIODEN					RCC_AHB1ENR_GPIODEN_Msk									// RCC AHB1NER register GPIODEN Macro
 
-#define RCC_AHB1ENR_GPIOEEN_Pos				(4U)													// RCC AHB1NER register GPIODEN Bit Position
-#define RCC_AHB1ENR_GPIOEEN_Msk				(0x1U << RCC_AHB1ENR_GPIOEEN_Pos)						// RCC AHB1NER register GPIODEN Bit Mask
-#define RCC_AHB1ENR_GPIOEEN					RCC_AHB1ENR_GPIOEEN_Msk
+#define RCC_AHB1ENR_GPIOEEN_Pos				(4U)													// RCC AHB1NER register GPIOEEN Bit Position
+#define RCC_AHB1ENR_GPIOEEN_Msk				(0x1U << RCC_AHB1ENR_GPIOEEN_Pos)						// RCC AHB1NER register GPIOEEN Bit Mask
+#define RCC_AHB1ENR_GPIOEEN					RCC_AHB1ENR_GPIOEEN_Msk									// RCC AHB1NER register GPIOEEN Macro
 
-#define RCC_AHB1ENR_GPIOFEN_Pos				(5U)													// RCC AHB1NER register GPIODEN Bit Position
-#define RCC_AHB1ENR_GPIOFEN_Msk				(0x1U << RCC_AHB1ENR_GPIOFEN_Pos)						// RCC AHB1NER register GPIODEN Bit Mask
-#define RCC_AHB1ENR_GPIOFEN					RCC_AHB1ENR_GPIOFEN_Msk									// RCC AHB1NER register GPIODEN Macro
+#define RCC_AHB1ENR_GPIOFEN_Pos				(5U)													// RCC AHB1NER register GPIOFEN Bit Position
+#define RCC_AHB1ENR_GPIOFEN_Msk				(0x1U << RCC_AHB1ENR_GPIOFEN_Pos)						// RCC AHB1NER register GPIOFEN Bit Mask
+#define RCC_AHB1ENR_GPIOFEN					RCC_AHB1ENR_GPIOFEN_Msk									// RCC AHB1NER register GPIOFEN Macro
 
-#define RCC_AHB1ENR_GPIOGEN_Pos				(6U)													// RCC AHB1NER register GPIODEN Bit Position
-#define RCC_AHB1ENR_GPIOGEN_Msk				(0x1U << RCC_AHB1ENR_GPIOGEN_Pos)						// RCC AHB1NER register GPIODEN Bit Mask
-#define RCC_AHB1ENR_GPIOGEN					RCC_AHB1ENR_GPIOGEN_Msk									// RCC AHB1NER register GPIODEN Macro
-
-								// RCC AHB1NER register GPIODEN Macro
+#define RCC_AHB1ENR_GPIOGEN_Pos				(6U)													// RCC AHB1NER register GPIOGEN Bit Position
+#define RCC_AHB1ENR_GPIOGEN_Msk				(0x1U << RCC_AHB1ENR_GPIOGEN_Pos)						// RCC AHB1NER register GPIOGEN Bit Mask
+#define RCC_AHB1ENR_GPIOGEN					RCC_AHB1ENR_GPIOGEN_Msk									// RCC AHB1NER register GPIOGEN Macro
 
 #define RCC_APB2ENR_SYSCFGEN_Pos			(14U)													// RCC APB2ENR register SYSCFGEN Bit Position
 #define RCC_APB2ENR_SYSCFG_Msk				(0x1U << RCC_APB2ENR_SYSCFGEN_Pos)						// RCC APB2ENR register SYSCFGEN Bit Mask
 #define RCC_APB2ENR_SYSCFGEN				RCC_APB2ENR_SYSCFG_Msk									// RCC APB2ENR register SYSCFGEN Macro
 
+#define RCC_APB2ENR_SPI1_Pos				(12U)													// RCC APB2ENR register SPI1 Bit Position
+#define RCC_APB2ENR_SPI1_Msk				(0x1U << RCC_APB2ENR_SPI1_Pos)							// RCC APB2ENR register SPI1 Bit Mask
+#define RCC_APB2ENR_SPI1					RCC_APB2ENR_SPI1_Msk									// RCC APB2ENR register SPI1 Macro
+
+#define RCC_APB1ENR_SPI2_Pos				(14U)													// RCC APB1ENR register SPI2 Bit Position
+#define RCC_APB1ENR_SPI2_Msk				(0x1U << RCC_APB1ENR_SPI2_Pos)							// RCC APB1ENR register SPI2 Bit Mask
+#define RCC_APB1ENR_SPI2					RCC_APB1ENR_SPI2_Msk									// RCC APB1ENR register SPI2 Macro
+
+#define RCC_APB1ENR_SPI3_Pos				(15U)													// RCC APB1ENR register SPI3 Bit Position
+#define RCC_APB1ENR_SPI3_Msk				(0x1U << RCC_APB1ENR_SPI3_Pos)							// RCC APB1ENR register SPI3 Bit Mask
+#define RCC_APB1ENR_SPI3					RCC_APB1ENR_SPI3_Msk									// RCC APB1ENR register SPI3 Macro
+
+#define RCC_APB2ENR_SPI4_Pos				(13U)													// RCC APB2ENR register SPI4 Bit Position
+#define RCC_APB2ENR_SPI4_Msk				(0x1U << RCC_APB2ENR_SPI4_Pos)							// RCC APB2ENR register SPI4 Bit Mask
+#define RCC_APB2ENR_SPI4					RCC_APB2ENR_SPI4_Msk									// RCC APB2ENR register SPI4 Macro
 
 #include "RCC.h"
-
 #include "EXTI.h"
 #include "GPIO.h"
-
+#include "SPI.h"
 
 
 
