@@ -17,24 +17,26 @@
  ******************************************************************************
  */
 
-#include "stm32f407xx.h"
+#include "../myDriver/Inc/stm32f407xx.h"
 static void GPIO_LedConfig();
 //static void LockControl();
 static void GPIO_ButtonInterruptConfg();
 static void SPI_Config();
+static void SPI_GPIO_Config();
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
 static void GPIO_LedConfig();
-
+SPI_HandleTypeDef_t SPI_Handle;
 void EXTI0_IRQHandler()
 {
+	char msgToSend[] = "Hello World\n";
 	if ( EXTI->PR & 0x1 )
 	{
 		EXTI->PR |= ( 0x1U << 0U);
 
-		GPIO_TogglePin(GPIOG, GPIO_PIN_13);
+		SPI_TransmitData(&SPI_Handle, (uint8_t*)msgToSend, strlen(msgToSend));
 
 	}
 }
@@ -45,10 +47,13 @@ int main(void)
 	/**/
 	GPIO_LedConfig();
 
-	//GPIO_WritePin(GPIOD,GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15, GPIO_Pin_Set);
-	GPIO_WritePin(GPIOG, GPIO_PIN_All, GPIO_Pin_Reset);
-
 	GPIO_ButtonInterruptConfg();
+
+	//GPIO_WritePin(GPIOD,GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15, GPIO_Pin_Set);
+	SPI_GPIO_Config();
+
+	SPI_Config();
+
     /* Loop forever */
 	for(;;)
 	{
@@ -61,10 +66,7 @@ static void GPIO_LedConfig()
 {
 	GPIO_InitTypeDef_t GPIO_InitStruct = {0};
 
-
-	RCC_GPIOA_CLK_ENABLE();
 	RCC_GPIOG_CLK_ENABLE();
-
 
 	GPIO_InitStruct.pinNumber =  GPIO_PIN_13 | GPIO_PIN_14;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
@@ -90,7 +92,7 @@ static void GPIO_ButtonInterruptConfg()
 	EXTI_InitTypeDef_t EXTI_InitStruct = { 0 };
 
 	RCC_SYSCFG_CLK_ENABLE();
-
+	RCC_GPIOA_CLK_ENABLE();
 	EXTI_LineConfig(EXTI_PortSource_GPIOA, EXTI_Source_0);
 
 	EXTI_InitStruct.EXTI_LineCmd = ENABLE;
@@ -108,12 +110,36 @@ static void GPIO_ButtonInterruptConfg()
 
 static void SPI_Config()
 {
-	SPI_HandleTypeDef_t SPI_HandleStructure= { 0 };
-	SPI_HandleStructure.Instance =  SPI1;
-	SPI_HandleStructure.Init.BaudRate = SPI_BAUDRATE_DIV16;
-	SPI_HandleStructure.Init.CPHA = SPI_CPHA_FIRST;
+	SPI_HandleTypeDef_t SPI_Handle= { 0 };
 
-	SPI_Init(&SPI_HandleStructure);
+	RCC_SP1_CLK_ENABLE();
+
+	SPI_Handle.Instance =  SPI1;
+	SPI_Handle.Init.BaudRate = SPI_BAUDRATE_DIV8;		//16/8 = 2MHz
+	SPI_Handle.Init.BusConfig = SPI_BUS_FULLDUPLEX;
+	SPI_Handle.Init.CPHA = SPI_CPHA_FIRST;
+	SPI_Handle.Init.CPOL = SPI_CPOL_LOW;
+	SPI_Handle.Init.DFF_Format = SPI_DFF_8BITS;
+	SPI_Handle.Init.FrameFormat = SPI_FRAMEFORMAT_MSB;
+	SPI_Handle.Init.Mode = SPI_MODE_MASTER;
+	SPI_Handle.Init.SSM_Cmd = SPI_SSM_ENABLE;
+
+	SPI_Init(&SPI_Handle);
+
+	SPI_PeriphCmd(&SPI_Handle, ENABLE);
 
 }
 
+static void SPI_GPIO_Config()
+{
+	GPIO_InitTypeDef_t GPIO_InitStruct = {0};
+
+	GPIO_InitStruct.pinNumber =  GPIO_PIN_5 | GPIO_PIN_7;  //PA5 -> CLK PA7 -> MOSI
+	GPIO_InitStruct.Mode = GPIO_MODE_AF;
+	GPIO_InitStruct.Speed = GPIO_OSPEED_VERY;
+	GPIO_InitStruct.Otype = GPIO_OTYPE_PP;
+	GPIO_InitStruct.PuPd = GPIO_PUPD_NOPULL;
+	GPIO_InitStruct.Alternate = GPIO_AF5;
+
+	GPIO_Init(GPIOA, &GPIO_InitStruct);
+}

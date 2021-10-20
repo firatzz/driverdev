@@ -6,7 +6,7 @@
  */
 
 
-#include "SPI.h"
+#include "../Inc/SPI.h"
 
 
 /**

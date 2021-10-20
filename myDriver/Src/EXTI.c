@@ -4,7 +4,7 @@
  *  Created on: Sep 16, 2021
  *      Author: Firat
  */
-#include "EXTI.h"
+#include "../Inc/EXTI.h"
 
 
 /**

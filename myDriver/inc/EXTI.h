@@ -8,7 +8,7 @@
 #ifndef INC_EXTI_H_
 #define INC_EXTI_H_
 
-#include <stm32f407xx.h>
+#include "stm32f407xx.h"
 
 /*
  *
