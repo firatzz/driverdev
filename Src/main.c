@@ -54,8 +54,10 @@ int main(void)
 
 	SPI_Config();
 
+
+
     /* Loop forever */
-	for(;;)
+ 	for(;;)
 	{
 
 	}
@@ -67,6 +69,7 @@ static void GPIO_LedConfig()
 	GPIO_InitTypeDef_t GPIO_InitStruct = {0};
 
 	RCC_GPIOG_CLK_ENABLE();
+	RCC_GPIOA_CLK_ENABLE();
 
 	GPIO_InitStruct.pinNumber =  GPIO_PIN_13 | GPIO_PIN_14;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
@@ -92,7 +95,7 @@ static void GPIO_ButtonInterruptConfg()
 	EXTI_InitTypeDef_t EXTI_InitStruct = { 0 };
 
 	RCC_SYSCFG_CLK_ENABLE();
-	RCC_GPIOA_CLK_ENABLE();
+
 	EXTI_LineConfig(EXTI_PortSource_GPIOA, EXTI_Source_0);
 
 	EXTI_InitStruct.EXTI_LineCmd = ENABLE;
@@ -110,7 +113,7 @@ static void GPIO_ButtonInterruptConfg()
 
 static void SPI_Config()
 {
-	SPI_HandleTypeDef_t SPI_Handle= { 0 };
+
 
 	RCC_SP1_CLK_ENABLE();
 
@@ -133,6 +136,7 @@ static void SPI_Config()
 static void SPI_GPIO_Config()
 {
 	GPIO_InitTypeDef_t GPIO_InitStruct = {0};
+
 
 	GPIO_InitStruct.pinNumber =  GPIO_PIN_5 | GPIO_PIN_7;  //PA5 -> CLK PA7 -> MOSI
 	GPIO_InitStruct.Mode = GPIO_MODE_AF;

@@ -58,7 +58,7 @@ void SPI_PeriphCmd(SPI_HandleTypeDef_t *SPI_Handle, FunctionalState_t stateOfSPI
 }
 
 /**
-  * @brief  SPI_Init configures the SPI Peripherals
+  * @brief  SPI_TransmitData transmits the data to slave
   *
   * @param  SPI_Handle = User Config Structure
   *
@@ -97,6 +97,48 @@ void SPI_TransmitData(SPI_HandleTypeDef_t *SPI_Handle, uint8_t *pData, uint16_t 
 	}
 
 	while(SPI_GetFlagStatus(SPI_Handle, SPI_Busy_FLAG)); //Wait for Busy Flag
+}
+
+/**
+  * @brief  SPI_ReceiveData receive data from slave
+  *
+  * @param  SPI_Handle = User Config Structure
+  *
+  * @param pData = Address of data to store the values
+  *
+  * @param sizeOfData = Length of your data in bytes
+  *
+  * @retval Void
+  */
+
+
+void SPI_ReceiveData(SPI_HandleTypeDef_t *SPI_Handle, uint8_t *pBuffer, uint16_t sizeOfData)
+{
+
+	if(SPI_Handle->Init.DFF_Format == SPI_DFF_16BITS)
+	{
+		while(sizeOfData > 0)
+		{
+			if( (SPI_GetFlagStatus(SPI_Handle, SPI_RXNE_FLAG)))
+			{
+				*((uint16_t*)pBuffer) = (uint16_t)SPI_Handle->Instance->DR;
+				pBuffer += sizeof(uint16_t);
+				sizeOfData -= 2;
+			}
+		}
+	}
+	else
+	{
+		while(sizeOfData > 0)
+		{
+			if( (SPI_GetFlagStatus(SPI_Handle, SPI_RXNE_FLAG)))
+			{
+				*(pBuffer) = *((__IO uint8_t*)&SPI_Handle->Instance->DR);
+				pBuffer++;
+				sizeOfData--;
+			}
+		}
+	}
 }
 
 /**
